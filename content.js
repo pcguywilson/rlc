@@ -10,7 +10,7 @@
     stream: { label: 'Teal', bg: '#002b36', bar: '#00212b', card: '#073642', text: '#e4ecef', muted: '#8fa3a8', accent: '#2f9be8', border: '#0d4250', flairBg: 'transparent', flair: '#8fa3a8', fresh: '#11543f', up: '#ff8b60', down: '#9494ff' },
     dark:   { label: 'Dark', bg: '#0f1115', bar: '#161a21', card: '#1a1f28', text: '#e8eaee', muted: '#8a93a3', accent: '#6cb6ff', border: '#262c38', flairBg: '#262c38', flair: '#c3c9d4', fresh: '#24361d', up: '#ff8b60', down: '#9494ff' },
     oled:   { label: 'Black', bg: '#000000', bar: '#0a0a0a', card: '#111111', text: '#f2f2f2', muted: '#8c8c8c', accent: '#4ea1ff', border: '#1f1f1f', flairBg: '#1f1f1f', flair: '#bdbdbd', fresh: '#1e3317', up: '#ff8b60', down: '#9494ff' },
-    light:  { label: 'Light', bg: '#eef0f3', bar: '#ffffff', card: '#ffffff', text: '#16181c', muted: '#5f6672', accent: '#0b63c5', border: '#dde1e6', flairBg: '#eef0f3', flair: '#4a505b', fresh: '#d9f2d0', up: '#e8590c', down: '#5b5bd6' },
+    light:  { label: 'Light', bg: '#e9ebee', bar: '#ffffff', card: '#ffffff', text: '#111317', muted: '#4b525e', accent: '#0a58b0', border: '#d3d7dd', flairBg: '#e9ebee', flair: '#3a404a', fresh: '#d4f0c8', up: '#d9480f', down: '#4c4cc9' },
   };
   const SIZES = { S: 15, M: 17, L: 19, XL: 22 };
 
@@ -92,6 +92,7 @@
     let modhash = document.querySelector('input[name="uh"]')?.value || null;
 
     document.querySelectorAll('link[rel="stylesheet"], style').forEach((el) => el.remove());
+    document.documentElement.className = ''; // drop RES night mode etc.
     const css = document.createElement('style');
     css.textContent = `
       html,body{background:var(--bg)!important;color:var(--text);margin:0;font-family:system-ui,"Segoe UI",Roboto,sans-serif;font-size:var(--fs)}
@@ -122,6 +123,12 @@
       @keyframes rlcfade{from{background:var(--fresh)}to{background:var(--card)}}
       .rlc-ctx{font-size:calc(var(--fs) * .8);color:var(--muted);border-left:3px solid var(--accent);padding:1px 0 1px 8px;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.85}
       .rlc-ctx b{font-weight:700}
+      /* RES and old Reddit inject styles after us; pin our colors */
+      .rlc-box,.rlc-body,.rlc-body *{color:var(--text)!important}
+      .rlc-box{background:var(--card)!important}
+      .rlc-ctx,.rlc-ctx *{color:var(--muted)!important}
+      .rlc-author{color:var(--muted)!important}
+      .rlc-author:hover,.rlc-body a,.rlc-acts a,.rlc-acts button:not(.rlc-vote){color:var(--accent)!important}
       .rlc-body p{margin:0 0 4px}
       .rlc-body p:last-child{margin-bottom:0}
       .rlc-body a{color:var(--accent)}

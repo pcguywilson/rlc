@@ -4,7 +4,14 @@ A locally hosted alternative to [reddit-stream.com](https://reddit-stream.com/).
 
 Built for UFC live discussion threads, works on any thread.
 
-![RLC Dark theme](screenshots/dark.png)
+![RLC Teal theme](screenshots/teal.png)
+
+<table>
+  <tr>
+    <td><img src="screenshots/dark.png" alt="Dark theme"><br><sub>Dark</sub></td>
+    <td><img src="screenshots/black.png" alt="Black theme"><br><sub>Black</sub></td>
+  </tr>
+</table>
 
 ## Features
 
@@ -36,6 +43,13 @@ You need to be logged into Reddit in Chrome.
 - **On a thread:** click the **⚡ Stream** button (bottom right).
 - **On a subreddit** (e.g. r/MMA on fight night): click **⚡ Live thread** to jump straight into the stickied live discussion.
 - **Exit** returns to the normal thread.
+
+<table>
+  <tr>
+    <td><img src="screenshots/live-thread-button.png" alt="Live thread button on a subreddit"><br><sub>⚡ Live thread on a subreddit</sub></td>
+    <td><img src="screenshots/stream-button.png" alt="Stream button on a thread"><br><sub>⚡ Stream on a thread</sub></td>
+  </tr>
+</table>
 
 Works from both new and old Reddit. On new Reddit the button hands off to `old.reddit.com`, where RLC takes over the page.
 
