@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "RLC (Reddit Live Comments)",
+  "version": "1.2.0",
+  "description": "RLC: live auto-updating comment stream for Reddit threads",
+  "content_scripts": [
+    {
+      "matches": ["https://www.reddit.com/*", "https://old.reddit.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
