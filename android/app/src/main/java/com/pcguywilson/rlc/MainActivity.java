@@ -27,6 +27,13 @@ public class MainActivity extends Activity {
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36";
     private static final Pattern THREAD = Pattern.compile("reddit\\.com/(?:r/[^/]+/)?comments/([a-z0-9]+)", Pattern.CASE_INSENSITIVE);
 
+    // Phone-only tweak for old Reddit pages: hide the sidebar so posts get the full width.
+    private static final String APP_CSS =
+            "(function(){if(location.hostname==='old.reddit.com'&&!document.getElementById('rlc-app-css')){"
+            + "var s=document.createElement('style');s.id='rlc-app-css';"
+            + "s.textContent='.side{display:none!important}body>.content{margin-right:5px!important}';"
+            + "(document.head||document.documentElement).appendChild(s);}})();";
+
     private WebView web;
     private String script;
 
@@ -35,7 +42,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        script = "if(!window.__rlcLoaded){window.__rlcLoaded=1;" + readAsset("content.js") + "\n}";
+        script = APP_CSS + "if(!window.__rlcLoaded){window.__rlcLoaded=1;" + readAsset("content.js") + "\n}";
 
         web = new WebView(this);
         web.setFitsSystemWindows(true);
