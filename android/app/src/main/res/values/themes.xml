@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RlcTheme" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/rlc_bg</item>
+        <item name="android:statusBarColor">@color/rlc_bar</item>
+        <item name="android:navigationBarColor">@color/rlc_bg</item>
+    </style>
+    <color name="rlc_bg">#002B36</color>
+    <color name="rlc_bar">#00212B</color>
+    <color name="rlc_accent">#2F9BE8</color>
+</resources>

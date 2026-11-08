@@ -53,6 +53,18 @@ You need to be logged into Reddit in Chrome.
 
 Works from both new and old Reddit. On new Reddit the button hands off to `old.reddit.com`, where RLC takes over the page.
 
+## Android
+
+Chrome on Android doesn't support extensions, so `android/` is a minimal standalone app: a full-screen WebView that injects the same `content.js` used by the Chrome extension. One script, two platforms.
+
+- Opens r/MMA on launch. Tap **⚡ Live thread** or open any thread and tap **⚡ Stream**.
+- Share a Reddit thread link to **RLC** from any app and it opens straight into stream mode.
+- Screen stays on while the app is open.
+- Log in once inside the app (Reddit username/password; Google sign-in is blocked in WebViews by Google). The session persists.
+- No dependencies beyond the Android SDK.
+
+**Build:** open the `android/` folder in Android Studio, let it sync, then Run on your phone (or Build > Build APK(s) and sideload). The build copies `../content.js` into the app's assets automatically, so changes to the script land in the next build.
+
 ## How it works
 
 - Polls `old.reddit.com/comments/<id>.json?sort=new` with your existing session (same-origin, so no CORS, proxy, or API key).

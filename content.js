@@ -139,9 +139,28 @@
       .rlc-reply div{display:flex;gap:8px;align-items:center}
       .rlc-reply .rlc-err{color:var(--up);font-size:13px}
       #rlc-foot{max-width:1200px;margin:0 auto;padding:0 20px 90px}
+      @media (max-width:700px){
+        #rlc-bar{flex-wrap:wrap;padding:8px 10px;gap:6px}
+        #rlc-title{flex-basis:100%}
+        #rlc-title a{font-size:14px}
+        #rlc-ctrl{flex-wrap:wrap;gap:6px;width:100%}
+        #rlc-filter{display:none}
+        #rlc-status{flex-basis:100%;order:9;font-size:12px}
+        #rlc-list{padding:6px 8px 12px}
+        #rlc-foot{padding:0 8px 90px}
+        .rlc-box{padding:8px 10px}
+        .rlc-meta{flex-wrap:wrap;gap:4px 8px}
+        .rlc-acts{gap:14px}
+        .rlc-vote{font-size:1.5em!important;padding:2px 6px!important}
+      }
       #rlc-new{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;border-radius:18px;padding:6px 16px;cursor:pointer;z-index:11;font-size:14px;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.35)}
     `;
     document.head.appendChild(css);
+    document.querySelectorAll('meta[name="viewport"]').forEach((el) => el.remove());
+    const vp = document.createElement('meta');
+    vp.name = 'viewport';
+    vp.content = 'width=device-width, initial-scale=1';
+    document.head.appendChild(vp);
 
     document.body.className = '';
     document.body.innerHTML = `
