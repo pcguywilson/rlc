@@ -63,7 +63,9 @@ Chrome on Android doesn't support extensions, so `android/` is a minimal standal
 - Log in once inside the app (Reddit username/password; Google sign-in is blocked in WebViews by Google). The session persists.
 - No dependencies beyond the Android SDK.
 
-**Build:** open the `android/` folder in Android Studio, let it sync, then Run on your phone (or Build > Build APK(s) and sideload). The build copies `../content.js` into the app's assets automatically, so changes to the script land in the next build.
+**Install:** every push to `main` builds the APK on GitHub Actions and publishes it to the `latest` release. On your phone, open [Releases](../../releases/tag/latest), download `RLC.apk`, and install. Builds are signed with the bundled key `android/app/release.keystore`, so updates install over each other. The same release also has `rlc-extension.zip` for Chrome.
+
+The build copies `content.js` into the app's assets automatically, so script changes land in the next build. Local build (optional): `cd android && ./gradlew assembleRelease`.
 
 ## How it works
 

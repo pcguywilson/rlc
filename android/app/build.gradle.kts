@@ -18,16 +18,26 @@ android {
         applicationId = "com.pcguywilson.rlc"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1
+        versionCode = (System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInt()
         versionName = "1.3.0"
     }
 
     sourceSets["main"].assets.srcDir(rlcAssets)
 
+    // Fixed personal key so each CI build installs over the previous one.
+    signingConfigs {
+        create("release") {
+            storeFile = file("release.keystore")
+            storePassword = "rlcrelease"
+            keyAlias = "rlc"
+            keyPassword = "rlcrelease"
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 
